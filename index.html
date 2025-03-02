@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endocrinology Discussion (4)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            user-select: none; /* يمنع تحديد النص */
+            -webkit-user-select: none; /* لمتصفحات WebKit مثل Chrome وSafari */
+            -moz-user-select: none; /* لمتصفح Firefox */
+            -ms-user-select: none; /* لمتصفح Internet Explorer/Edge */
+        }
+        @media print { /* إخفاء الصفحة عند الطباعة */
+            body { 
+                display: none;
+            }
+        }
+
+        .quiz-container {
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+        .timer {
+            color: red;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question p {
+            font-weight: bold;
+        }
+        .options label {
+            display: block;
+            margin: 5px 0;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            display: none;
+        }
+        .incorrect {
+            color: red;
+        }
+        .correct {
+            color: green;
+        }
+        .question-result {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        img {
+            pointer-events: none; /* يمنع سحب الصور */
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Endocrinology Discussion (4)</h1>
+        <div class="timer" id="timer">Time remaining: 60 seconds</div>
+
+        <div class="question" id="question-1">
+            <p>1- thyroid swelling moves up and down with deglutition because thyroid gland is enveloped in ..</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="Superficial cervical fascia">Superficial cervical fascia</label>
+                <label><input type="radio" name="q1" value="Pretracheal fascia">Pretracheal fascia</label>
+                <label><input type="radio" name="q1" value="Prevertebral fascia">Prevertebral fascia</label>
+                <label><input type="radio" name="q1" value="All of the above">All of the above</label>
+                <label><input type="radio" name="q1" value="None of the above">None of the above</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-2">
+            <p>2- what is the mechanism of amiodarone induced hyperthyroidism ?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="Increase 5 deiodinase activity">Increase 5 deiodinase activity</label>
+                <label><input type="radio" name="q2" value="Decrease 5 deiodinase activity">Decrease 5 deiodinase activity</label>
+                <label><input type="radio" name="q2" value="Hypothyroidism in iodine deficient area">Hypothyroidism in iodine deficient area</label>
+                <label><input type="radio" name="q2" value="Destructive Thyroiditis">Destructive Thyroiditis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-3">
+            <p>3- Commonest cause of thyrotoxicosis is:</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="Multinodular goitre">Multinodular goitre</label>
+                <label><input type="radio" name="q3" value="Hashimoto's thyroiditis">Hashimoto's thyroiditis</label>
+                <label><input type="radio" name="q3" value="Graves' disease">Graves' disease</label>
+                <label><input type="radio" name="q3" value="Well-differentiated carcinoma">Well-differentiated carcinoma</label>
+                <label><input type="radio" name="q3" value="Toxic adenoma">Toxic adenoma</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-4">
+            <p>4- A 42-year-old woman presents with visual disturbances. She reports having double vision which was intermittent initially but has now become much more frequent. In addition, she becomes breathless very easily and experiences palpitations. On examination, raised, painless lesions are observed on the front of her shins and finger clubbing. The most likely diagnosis is:</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="De Quervain’s thyroiditis">De Quervain’s thyroiditis</label>
+                <label><input type="radio" name="q4" value="Thyroid storm">Thyroid storm</label>
+                <label><input type="radio" name="q4" value="Pheochromocytoma">Pheochromocytoma</label>
+                <label><input type="radio" name="q4" value="Graves’ disease">Graves’ disease</label>
+                <label><input type="radio" name="q4" value="Plummer’s disease">Plummer’s disease</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-5">
+            <p>5- A 35-year-old female is referred to the endocrine clinic due to weight loss and palpitations. The following results are obtained .. TSH < 0.05 mu/l T4 178 mmol/l Which one of the following features would most suggest a diagnosis of Grave's disease?</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="Atrial fibrillation">Atrial fibrillation</label>
+                <label><input type="radio" name="q5" value="Lid lag">Lid lag</label>
+                <label><input type="radio" name="q5" value="Family history of radioiodine treatment">Family history of radioiodine treatment</label>
+                <label><input type="radio" name="q5" value="Pretibial myxoedema">Pretibial myxoedema</label>
+                <label><input type="radio" name="q5" value="Multinodular goitre">Multinodular goitre</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-6">
+            <p>6- A 30-year-old female is diagnosed with having Grave's disease. What is her chance of developing thyroid eye disease?</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="2-5%">2-5%</label>
+                <label><input type="radio" name="q6" value="5-10%">5-10%</label>
+                <label><input type="radio" name="q6" value="10-15%">10-15%</label>
+                <label><input type="radio" name="q6" value="15-25%">15-25%</label>
+                <label><input type="radio" name="q6" value="25-50%">25-50%</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-7">
+            <p>7- A 54-year-old female presents to the Emergency Department concerned about double vision. She is noted to have exophthalmos and conjunctival oedema on examination and a diagnosis of thyroid eye disease is suspected. What can be said regarding her thyroid status?</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="Hyper- or euthyroid">Hyper- or euthyroid</label>
+                <label><input type="radio" name="q7" value="Hypothyroid">Hypothyroid</label>
+                <label><input type="radio" name="q7" value="Hyperthyroid">Hyperthyroid</label>
+                <label><input type="radio" name="q7" value="Hypo- or euthyroid">Hypo- or euthyroid</label>
+                <label><input type="radio" name="q7" value="Eu- hypo- or hyperthyroid">Eu- hypo- or hyperthyroid</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-8">
+            <p>8- A 55-year-old woman is investigated following an osteoporotic hip fracture. The following results are obtained: TSH < 0.05 mu/l Free T4 29 pmol/l Which one of the following autoantibodies is most likely to be present?</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="Anti-TSH receptor stimulating autoantibodies">Anti-TSH receptor stimulating autoantibodies</label>
+                <label><input type="radio" name="q8" value="Anti-nuclear antibodies">Anti-nuclear antibodies</label>
+                <label><input type="radio" name="q8" value="Anti-thyroglobulin autoantibodies">Anti-thyroglobulin autoantibodies</label>
+                <label><input type="radio" name="q8" value="Anti-microsomal antibodies">Anti-microsomal antibodies</label>
+                <label><input type="radio" name="q8" value="Anti-thyroid peroxidase autoantibodies">Anti-thyroid peroxidase autoantibodies</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-9">
+            <p>9- A 33-year-old woman is referred to the endocrinology clinic with thyrotoxicosis. Recent blood tests show the following: TSH < 0.05 mu/I Free T4 25 pmol/l A smooth, non-tender goitre is noted on examination of the neck. The patient also has exophthalmos although there is no ophthalmoplegia, no reduction in visual acuity and no eye symptoms present. What is the most appropriate management?</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="Radioiodine treatment">Radioiodine treatment</label>
+                <label><input type="radio" name="q9" value="Carbimazole">Carbimazole</label>
+                <label><input type="radio" name="q9" value="Propranolol">Propranolol</label>
+                <label><input type="radio" name="q9" value="Fine needle aspiration biopsy of the thyroid gland">Fine needle aspiration biopsy of the thyroid gland</label>
+                <label><input type="radio" name="q9" value="Intravenous corticosteroids">Intravenous corticosteroids</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-10">
+            <p>10- A 30-year-old female is started on carbimazole 20 mg bd following a diagnosis of Grave's disease. What is the best biochemical marker to assess her response to treatment?</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="Total T4">Total T4</label>
+                <label><input type="radio" name="q10" value="TSH">TSH</label>
+                <label><input type="radio" name="q10" value="Free T4">Free T4</label>
+                <label><input type="radio" name="q10" value="ESR">ESR</label>
+                <label><input type="radio" name="q10" value="Free T3">Free T3</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-11">
+            <p> 11-A 34-year-old woman presents with palpitations, tremor and heat intolerance. She is diagnosed with Graves' disease and started on methimazole. What is the mechanism of action of this drug?</p>
+            <div class="options">
+                <label><input type="radio" name="q11" value="Inhibits 5'-deiodinase reducing production of T3"> Inhibits 5'-deiodinase reducing production of T3</label>
+                <label><input type="radio" name="q11" value="Increases renal excretion of carbimazole"> Increases renal excretion of carbimazole</label>
+                <label><input type="radio" name="q11" value="Blocks uptake of iodine to thyroid gland by reducing levels of hydrogen peroxide"> Blocks uptake of iodine to thyroid gland by reducing levels of hydrogen peroxide</label>
+                <label><input type="radio" name="q11" value="Blocks thyroid peroxidase from coupling and iodinating the tyrosine residues on thyroglobulin"> Blocks thyroid peroxidase from coupling and iodinating the tyrosine residues on thyroglobulin</label>
+                <label><input type="radio" name="q11" value="Increases rate of thyroxine breakdown by thyroid peroxidase"> Increases rate of thyroxine breakdown by thyroid peroxidase</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-12">
+            <p> 12-A 29-year-old female who is 14 weeks into her first pregnancy is investigated for excessive sweating and tremor. Blood tests reveal the following: TSH < 0.05 mu/l T4 188 nmol/l What is the most appropriate management?</p>
+            <div class="options">
+                <label><input type="radio" name="q12" value="Immediate surgery"> Immediate surgery</label>
+                <label><input type="radio" name="q12" value="Carbimazole"> Carbimazole</label>
+                <label><input type="radio" name="q12" value="Surgery at start of third trimester"> Surgery at start of third trimester</label>
+                <label><input type="radio" name="q12" value="Propylthiouracil"> Propylthiouracil</label>
+                <label><input type="radio" name="q12" value="Radioiodine"> Radioiodine</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-13">
+            <p> 13-A 33-year-old female is referred to endocrinology with thyrotoxicosis. Following a discussion of management options she elects to have radioiodine therapy. Which one of the following is the most likely adverse effect?</p>
+            <div class="options">
+                <label><input type="radio" name="q13" value="Hypothyroidism"> Hypothyroidism</label>
+                <label><input type="radio" name="q13" value="Thyroid malignancy"> Thyroid malignancy</label>
+                <label><input type="radio" name="q13" value="Agranulocytosis"> Agranulocytosis</label>
+                <label><input type="radio" name="q13" value="Oesophagitis"> Oesophagitis</label>
+                <label><input type="radio" name="q13" value="Precipitation of thyroid eye disease"> Precipitation of thyroid eye disease</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-14">
+            <p> 14-A 27-year-old female develops eye pain and reduced visual acuity following the initiation of treatment for her recently diagnosed Grave's disease. Which one of the following treatments is likely to have been started?</p>
+            <div class="options">
+                <label><input type="radio" name="q14" value="Radioiodine treatment"> Radioiodine treatment</label>
+                <label><input type="radio" name="q14" value="Thyroidectomy"> Thyroidectomy</label>
+                <label><input type="radio" name="q14" value="Propylthiouracil"> Propylthiouracil</label>
+                <label><input type="radio" name="q14" value="Carbimazole and thyroxine"> Carbimazole and thyroxine</label>
+                <label><input type="radio" name="q14" value="Carbimazole"> Carbimazole</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-15">
+            <p> 15-A 35-year-old female who has recently being diagnosed with Grave's disease presents for review 3 months after starting a 'block and replace' regime with carbimazole and thyroxine. She is concerned about developing thyroid eye disease. What is the best way that her risk of developing thyroid eye disease can be reduced?</p>
+            <div class="options">
+                <label><input type="radio" name="q15" value="Reduce alcohol intake"> Reduce alcohol intake</label>
+                <label><input type="radio" name="q15" value="A diet rich in omega-3 fatty acids"> A diet rich in omega-3 fatty acids</label>
+                <label><input type="radio" name="q15" value="Regular exercise"> Regular exercise</label>
+                <label><input type="radio" name="q15" value="Stop smoking"> Stop smoking</label>
+                <label><input type="radio" name="q15" value="Lose weight"> Lose weight</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-16">
+            <p> 16-A 16-year-old girl presents to her GP complaining of a swelling in her neck which she has noticed in the last 2 weeks. She has felt more irritable although this is often transient. On examination, a diffuse swelling is palpated with no bruit on auscultation. The most likely diagnosis is:</p>
+            <div class="options">
+                <label><input type="radio" name="q16" value="Hyperthyroidism"> Hyperthyroidism</label>
+                <label><input type="radio" name="q16" value="Simple goitre"> Simple goitre</label>
+                <label><input type="radio" name="q16" value="Riedel’s thyroiditis"> Riedel’s thyroiditis</label>
+                <label><input type="radio" name="q16" value="Thyroid carcinoma"> Thyroid carcinoma</label>
+                <label><input type="radio" name="q16" value="Thyroid cyst"> Thyroid cyst</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-17">
+            <p> 17-A 33-year-old woman presents with weight loss and excessive sweating. her partner reports that she is 'on edge' all the time and during the consultation you notice a fine tremor. Her pulse rate is 96/min. A large, non-tender goitre is noted. Examination of her eyes is unremarkable with no evidence of exophthalmos. Free T4 26 pmol/l Free T3 12.2 pmol/l (3.0-7.5) TSH < 0.05 mu/l What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q17" value="Toxic multinodular goitre"> Toxic multinodular goitre</label>
+                <label><input type="radio" name="q17" value="Hashimoto's thyroiditis"> Hashimoto's thyroiditis</label>
+                <label><input type="radio" name="q17" value="T3-secreting adenoma"> T3-secreting adenoma</label>
+                <label><input type="radio" name="q17" value="De Quervain's thyroiditis"> De Quervain's thyroiditis</label>
+                <label><input type="radio" name="q17" value="Graves' disease"> Graves' disease</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-18">
+            <p> 18-A 36-year-old woman presents with feeling tired and cold all the time. On examination a firm, non-tender goitre is noted. Blood tests reveal the following: TSH 24.2 mU/l Free T4 5.4 pmol/l What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q18" value="Primary atrophic hypothyroidism"> Primary atrophic hypothyroidism</label>
+                <label><input type="radio" name="q18" value="Pituitary failure"> Pituitary failure</label>
+                <label><input type="radio" name="q18" value="De Quervain's thyroiditis"> De Quervain's thyroiditis</label>
+                <label><input type="radio" name="q18" value="Iodine deficiency"> Iodine deficiency</label>
+                <label><input type="radio" name="q18" value="Hashimoto's thyroiditis"> Hashimoto's thyroiditis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-19">
+            <p> 19-Which one of the following is most likely to be found in a patient with Hashimoto's thyroiditis?</p>
+            <div class="options">
+                <label><input type="radio" name="q19" value="Raised ESR"> Raised ESR</label>
+                <label><input type="radio" name="q19" value="Anti-TSH receptor stimulating antibodies"> Anti-TSH receptor stimulating antibodies</label>
+                <label><input type="radio" name="q19" value="Anti-thyroid peroxidase antibodies"> Anti-thyroid peroxidase antibodies</label>
+                <label><input type="radio" name="q19" value="Decreased TSH"> Decreased TSH</label>
+                <label><input type="radio" name="q19" value="Co-existing type 2 diabetes mellitus"> Co-existing type 2 diabetes mellitus</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-20">
+            <p> 20-A 46-year-old woman is referred to endocrine with a tender neck swelling. Blood results are as follows: TSH <0.1 mU/l T4 188 nmol/l Hb 14.2 g/dl Plt 377 * 109/l WBC 6.4 * 109/l ESR 65 mm/hr Technetium thyroid scan shows decreased uptake globally What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q20" value="Sick thyroid syndrome"> Sick thyroid syndrome</label>
+                <label><input type="radio" name="q20" value="Acute bacterial thyroiditis"> Acute bacterial thyroiditis</label>
+                <label><input type="radio" name="q20" value="Hashimoto's thyroiditis"> Hashimoto's thyroiditis</label>
+                <label><input type="radio" name="q20" value="Subacute thyroiditis"> Subacute thyroiditis</label>
+                <label><input type="radio" name="q20" value="Toxic multinodular goitre"> Toxic multinodular goitre</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-21">
+            <p>21-A 58-year-old woman presents with an acutely painful neck, the patient has a fever, blood pressure is 135/85 mmHg and heart rate 102 bpm. The patient explains the pain started 2 weeks ago and has gradually become worse. She also notes palpitations particularly and believes she has lost weight. The symptoms subside and the patient presents again complaining of intolerance to the cold temperatures.
+            The most likely diagnosis is:</p>
+            <div class="options">
+                <label><input type="radio" name="q-21" value="Thyroid papillary carcinoma"> Thyroid papillary carcinoma</label>
+                <label><input type="radio" name="q-21" value="Plummer’s disease"> Plummer’s disease</label>
+                <label><input type="radio" name="q-21" value="De Quervain’s thyroiditis"> De Quervain’s thyroiditis</label>
+                <label><input type="radio" name="q-21" value="Hyperthyroidism"> Hyperthyroidism</label>
+                <label><input type="radio" name="q-21" value="Thyroid follicular carcinoma"> Thyroid follicular carcinoma</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-22">
+            <p>22- A 54-year-old woman presents to the Emergency Department with confusion and fever. She has a past history of thyrotoxicosis previously treated with radioiodine therapy. On examination she has a pulse of 120/min regular, blood pressure 150/90 mmHg, temperature of 39.1ºC and a respiratory rate of 18/min. Examination of the cardiorespiratory system is unremarkable and urine dipstick is clear. Blood results showed the following:
+            Free T4 84 pmol/l (normal range 10-22 pmol/l)
+            Free T3 29 pmol/l (2.5-5.5 pmol/l)
+            TSH < 0.01 mU/l (0.5-4.0 mU/l)
+            Which one of the following does not have a role in the subsequent management?</p>
+            <div class="options">
+                <label><input type="radio" name="q-22" value="Lugol's iodine"> Lugol's iodine</label>
+                <label><input type="radio" name="q-22" value="Propranolol"> Propranolol</label>
+                <label><input type="radio" name="q-22" value="Propylthiouracil"> Propylthiouracil</label>
+                <label><input type="radio" name="q-22" value="Bicarbonate"> Bicarbonate</label>
+                <label><input type="radio" name="q-22" value="Dexamethasone"> Dexamethasone</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-23">
+            <p>23-A 68-year-old woman is found to have the following blood tests:
+            TSH 0.05 mu/l
+            Free T4 19 pmol/l (range 9-25 pmol/l)
+            Free T3 7 pmol/l (range 3-9 pmol/l)
+            If left untreated, what are the most likely possible consequences?</p>
+            <div class="options">
+                <label><input type="radio" name="q-23" value="Supraventricular arrhythmias and osteoporosis"> Supraventricular arrhythmias and osteoporosis</label>
+                <label><input type="radio" name="q-23" value="Supraventricular arrhythmias and hyperlipidaemia"> Supraventricular arrhythmias and hyperlipidaemia</label>
+                <label><input type="radio" name="q-23" value="Hypothyroidism and impaired glucose tolerance"> Hypothyroidism and impaired glucose tolerance</label>
+                <label><input type="radio" name="q-23" value="Myasthenia gravis and hypothyroidism"> Myasthenia gravis and hypothyroidism</label>
+                <label><input type="radio" name="q-23" value="Impaired glucose tolerance and hyperlipidaemia"> Impaired glucose tolerance and hyperlipidaemia</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-24">
+            <p>24-Which one of the following is the most common cause of hypothyroidism in the UK?</p>
+            <div class="options">
+                <label><input type="radio" name="q-24" value="Pituitary failure"> Pituitary failure</label>
+                <label><input type="radio" name="q-24" value="Dietary iodine deficiency"> Dietary iodine deficiency</label>
+                <label><input type="radio" name="q-24" value="Lithium therapy"> Lithium therapy</label>
+                <label><input type="radio" name="q-24" value="Primary atrophic hypothyroidism"> Primary atrophic hypothyroidism</label>
+                <label><input type="radio" name="q-24" value="Hashimoto's thyroiditis"> Hashimoto's thyroiditis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-25">
+            <p>25-Which one of the following skin disorders is least associated with hypothyroidism?</p>
+            <div class="options">
+                <label><input type="radio" name="q-25" value="Xanthomata"> Xanthomata</label>
+                <label><input type="radio" name="q-25" value="Pruritus"> Pruritus</label>
+                <label><input type="radio" name="q-25" value="Pretibial myxoedema"> Pretibial myxoedema</label>
+                <label><input type="radio" name="q-25" value="Eczema"> Eczema</label>
+                <label><input type="radio" name="q-25" value="Dry coarse hair"> Dry coarse hair</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-26">
+            <p>26- A 47-year-old woman is referred to the endocrine clinic complaining of a two-month history of tiredness. Despite wearing several items of clothing, the patient appears intolerant to the room temperature. She has noticed an increase in weight, particularly around her waist. The most appropriate investigation is:</p>
+            <div class="options">
+                <label><input type="radio" name="q-26" value="Radioiodine scan"> Radioiodine scan</label>
+                <label><input type="radio" name="q-26" value="Thyroid stimulating hormone (TSH)"> Thyroid stimulating hormone (TSH)</label>
+                <label><input type="radio" name="q-26" value="Total tetraiodothyronine level (T4)"> Total tetraiodothyronine level (T4)</label>
+                <label><input type="radio" name="q-26" value="Triiodothyronine level (T3)"> Triiodothyronine level (T3)</label>
+                <label><input type="radio" name="q-26" value="Ultrasound scan of the neck"> Ultrasound scan of the neck</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-27">
+            <p>27-A 52-year-old woman who was diagnosed as having primary atrophic hypothyroidism 12 months ago is reviewed following recent thyroid function tests (TFTs):
+            TSH 12.5 mU/l
+            Free T4 14 pmol/l
+            She is currently taking 75mcg of levothyroxine once a day. How should these results be interpreted?</p>
+            <div class="options">
+                <label><input type="radio" name="q-27" value="Poor compliance with medication"> Poor compliance with medication</label>
+                <label><input type="radio" name="q-27" value="Her thyroxine dose needs to be increased"> Her thyroxine dose needs to be increased</label>
+                <label><input type="radio" name="q-27" value="Evidence of recent systemic steroid therapy"> Evidence of recent systemic steroid therapy</label>
+                <label><input type="radio" name="q-27" value="She is on the correct dose"> She is on the correct dose</label>
+                <label><input type="radio" name="q-27" value="T4 to T3 conversion disorder"> T4 to T3 conversion disorder</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-28">
+            <p>28-A 53-year-old Female with a history of primary atrophic hypothyroidism is assessed two months following a change in her dose of levothyroxine. Which one of the following Best describes what the TSH should ideally be?</p>
+            <div class="options">
+                <label><input type="radio" name="q-28" value="Between 0.5 to 1.0 mU/l"> Between 0.5 to 1.0 mU/l</label>
+                <label><input type="radio" name="q-28" value="Between 0.5 to 2.5 mU/l"> Between 0.5 to 2.5 mU/l</label>
+                <label><input type="radio" name="q-28" value="Between 2.5 to 4.5 mU/l"> Between 2.5 to 4.5 mU/l</label>
+                <label><input type="radio" name="q-28" value="Between 1.5 to 3.5 mU/l"> Between 1.5 to 3.5 mU/l</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-29">
+            <p>29- Which of the following thyroid function tests will likely be altered due to pregnancy?</p>
+            <div class="options">
+                <label><input type="radio" name="q-29" value="Free T3"> Free T3</label>
+                <label><input type="radio" name="q-29" value="Free T4"> Free T4</label>
+                <label><input type="radio" name="q-29" value="Total T3"> Total T3</label>
+                <label><input type="radio" name="q-29" value="Thyroid-stimulating hormone (TSH)"> Thyroid-stimulating hormone (TSH)</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-30">
+            <p>30-A 23-year-old woman is seen at the maternity clinic after urine and blood testing confirm she is pregnant. Based on her last menstrual dates she is estimated to be approximately 9 weeks pregnant.
+            The patient has established hypothyroidism following a thyroidectomy several years previous but is well controlled on thyroxine. This is her second pregnancy with her first being two years ago in which she delivered at 39 weeks with no complications.
+            What change to their established medication may be required for patients such as this?</p>
+            <div class="options">
+                <label><input type="radio" name="q-30" value="Changed to a different agent"> Changed to a different agent</label>
+                <label><input type="radio" name="q-30" value="Increase by up to 100%"> Increase by up to 100%</label>
+                <label><input type="radio" name="q-30" value="Increase by up to 20%"> Increase by up to 20%</label>
+                <label><input type="radio" name="q-30" value="Increase by up to 50%"> Increase by up to 50%</label>
+                <label><input type="radio" name="q-30" value="No change required at this stage of the pregnancy"> No change required at this stage of the pregnancy</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-31">
+            <p>31-You are reviewing a 34-year-old woman in endocrine clinic. She had a total thyroidectomy 6 months ago for a toxic multinodular goitre.
+            Her thyroid-stimulating hormone (TSH) level today is 2.7 mU/L. She is currently taking 100 micrograms of levothyroxine daily.
+            She is keen on trying to conceive as soon as possible and has already started to take folic acid supplements. She has requested your advice on how to manage her levothyroxine. What would be the most appropriate advice to give her?</p>
+            <div class="options">
+                <label><input type="radio" name="q-31" value="Continue current dose until first antenatal appointment at 8-10 weeks"> Continue current dose until first antenatal appointment at 8-10 weeks</label>
+                <label><input type="radio" name="q-31" value="Reduce to 75 micrograms immediately and recheck TSH in 6 weeks"> Reduce to 75 micrograms immediately and recheck TSH in 6 weeks</label>
+                <label><input type="radio" name="q-31" value="Continue current dose but increase to 125 micrograms when 4-6 weeks pregnant"> Continue current dose but increase to 125 micrograms when 4-6 weeks pregnant</label>
+                <label><input type="radio" name="q-31" value="Increase to 150 micrograms immediately and recheck TSH in 6 weeks"> Increase to 150 micrograms immediately and recheck TSH in 6 weeks</label>
+                <label><input type="radio" name="q-31" value="Continue current dose but increase to 200 micrograms once pregnancy confirmed"> Continue current dose but increase to 200 micrograms once pregnancy confirmed</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-32">
+            <p>32-A 49-year-old woman is investigated for thyrotoxicosis. On examination she is noted to have a goitre containing multiple irregular nodules. Nuclear scintigraphy with technetium 99m reveals patchy uptake. What is the treatment of choice?</p>
+            <div class="options">
+                <label><input type="radio" name="q-32" value="Corticosteroids"> Corticosteroids</label>
+                <label><input type="radio" name="q-32" value="Radioiodine"> Radioiodine</label>
+                <label><input type="radio" name="q-32" value="Block-and-replace regime"> Block-and-replace regime</label>
+                <label><input type="radio" name="q-32" value="Surgery"> Surgery</label>
+                <label><input type="radio" name="q-32" value="Anti-thyroid drug titration regime"> Anti-thyroid drug titration regime</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-33">
+            <p>33-A 56-year-old female is admitted to ICU with a severe pneumonia. Thyroid function tests are most likely to show:</p>
+            <div class="options">
+                <label><input type="radio" name="q-33" value="TSH normal, thyroxine high, T3 high"> TSH normal, thyroxine high, T3 high</label>
+                <label><input type="radio" name="q-33" value="TSH normal / low, thyroxine low, T3 low"> TSH normal / low, thyroxine low, T3 low</label>
+                <label><input type="radio" name="q-33" value="TSH high, thyroxine low, T3 low"> TSH high, thyroxine low, T3 low</label>
+                <label><input type="radio" name="q-33" value="TSH low, thyroxine high, T3 high"> TSH low, thyroxine high, T3 high</label>
+                <label><input type="radio" name="q-33" value="TSH high, thyroxine normal, T3 high"> TSH high, thyroxine normal, T3 high</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-34">
+            <p>34- A 62 year old woman is referred with a 3-month history of diffuse swelling in her neck and weight loss. On palpation she has a large, firm nodular goitre and non-tender cervical lymphadenopathy. She complains of hoarseness of her voice. What is her likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q-34" value="Anaplastic carcinoma"> Anaplastic carcinoma</label>
+                <label><input type="radio" name="q-34" value="Follicular cell carcinoma"> Follicular cell carcinoma</label>
+                <label><input type="radio" name="q-34" value="Medullary carcinoma"> Medullary carcinoma</label>
+                <label><input type="radio" name="q-34" value="Papillary cell carcinoma"> Papillary cell carcinoma</label>
+                <label><input type="radio" name="q-34" value="Toxic adenoma"> Toxic adenoma</label>
+            </div>
+        </div>
+
+        <button class="btn" id="nextBtn" onclick="nextQuestion()">Next Question</button>
+        <button class="btn" id="submitBtn" onclick="evaluateQuiz()" style="display: none;">Submit Quiz</button>
+
+        <div class="result" id="result">
+            <h2>Results</h2>
+            <div id="score"></div>
+            <div id="answers-summary"></div>
+        </div>
+    </div>
+
+    <script>
+        // إضافة حدث للكيبورد لمنع حفظ الصفحة
+        document.addEventListener("keydown", function (event) {
+            if (event.ctrlKey && event.key === "s") {
+                event.preventDefault();
+                alert("تم منع حفظ الصفحة!");
+            }
+        });
+
+        // إضافة حدث للكيبورد لمنع فتح أدوات المطور
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
+                event.preventDefault();
+                alert("تم تعطيل أدوات المطور!");
+            }
+        });
+
+        // إضافة حدث للكيبورد لمنع النقر بزر اليمين
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault(); // يمنع فتح قائمة السياق
+            alert("النقر بزر الماوس الأيمن غير مسموح به.");
+        });
+
+        let currentQuestion = 1;
+        const totalQuestions = 34;
+        let score = 0;
+        let timerInterval;
+        const answers = {
+            q1: "Pretracheal fascia",
+            q2: "Destructive Thyroiditis",
+            q3: "Graves' disease",
+            q4: "Graves’ disease",
+            q5: "Pretibial myxoedema",
+            q6: "25-50%",
+            q7: "Eu- hypo- or hyperthyroid",
+            q8: "Anti-TSH receptor stimulating autoantibodies",
+            q9: "Carbimazole",
+            q10: "TSH",
+            q11: "Blocks thyroid peroxidase from coupling and iodinating the tyrosine residues on thyroglobulin",
+            q12: "Propylthiouracil",
+            q13: "Hypothyroidism",
+            q14: "Radioiodine treatment",
+            q15: "Stop smoking",
+            q16: "Simple goitre",
+            q17: "Graves' disease",
+            q18: "Hashimoto's thyroiditis",
+            q19: "Anti-thyroid peroxidase antibodies",
+            q20: "Subacute thyroiditis",
+            q21: "De Quervain’s thyroiditis",
+            q22: "Bicarbonate",
+            q23: "Supraventricular arrhythmias and osteoporosis",
+            q24: "Primary atrophic hypothyroidism",
+            q25: "Pretibial myxoedema",
+            q26: "Thyroid stimulating hormone (TSH)",
+            q27: "Poor compliance with medication",
+            q28: "Between 0.5 to 2.5 mU/l",
+            q29: "Total T3",
+            q30: "Increase by up to 50%",
+            q31: "Continue current dose but increase to 125 micrograms when 4-6 weeks pregnant",
+            q32: "Radioiodine",
+            q33: "TSH normal / low, thyroxine low, T3 low",
+            q34: "Anaplastic carcinoma"
+        };
+
+        function showQuestion() {
+            document.querySelectorAll('.question').forEach((q, index) => {
+                q .style.display = index + 1 === currentQuestion ? 'block' : 'none';
+            });
+            document.getElementById('nextBtn').style.display = currentQuestion < totalQuestions ? 'block' : 'none';
+            document.getElementById('submitBtn').style.display = currentQuestion === totalQuestions ? 'block' : 'none';
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            clearInterval(timerInterval);
+            startTimer();
+            showQuestion();
+        }
+
+        function startTimer() {
+            let timeRemaining = 60;
+            document.getElementById('timer').textContent = `Time remaining: ${timeRemaining} seconds`;
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                document.getElementById('timer').textContent = `Time remaining: ${timeRemaining} seconds`;
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    if (currentQuestion < totalQuestions) {
+                        nextQuestion();
+                    } else {
+                        evaluateQuiz();
+                    }
+                }
+            }, 1000);
+        }
+
+        function evaluateQuiz() {
+            score = 0;
+            let summary = '';
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                const correctAnswer = answers[`q${i}`];
+                const questionElement = document.getElementById(`question-${i}`);
+                const options = document.querySelectorAll(`input[name="q${i}"]`);
+                let questionSummary = `<p><strong>Question ${i}: </strong>${questionElement.querySelector('p').innerText}</p>`;
+
+                options.forEach(option => {
+                    const optionLabel = option.parentElement;
+                    if (option.value === correctAnswer) {
+                        optionLabel.style.color = 'green';
+                    } else if (selectedOption && selectedOption.value === option.value) {
+                        optionLabel.style.color = 'red';
+                    }
+                });
+
+                questionSummary += `<div>Answer: <strong>${selectedOption ? selectedOption.value : 'None selected'}</strong></div>`;
+                questionSummary += `<div>Correct answer: <strong>${correctAnswer}</strong></div>`;
+
+                if (selectedOption && selectedOption.value === correctAnswer) {
+                    score++;
+                    summary += questionSummary + `<p class="correct">Correct</p>`;
+                } else {
+                    summary += questionSummary + `<p class="incorrect">Incorrect</p>`;
+                }
+            }
+
+            document.getElementById('score').textContent = `Your score: ${score} out of ${totalQuestions}`;
+            document.getElementById('answers-summary').innerHTML = summary;
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('timer').style.display = 'none'; 
+            document.querySelectorAll('.question').forEach((q) => q.style.display = 'none');
+
+            clearInterval(timerInterval);
+        }
+
+        window.onload = function() {
+            showQuestion();
+            startTimer();
+        };
+        
+        
+        function nextQuestion() {
+    // Increase the current question counter
+            currentQuestion++;
+
+            // Reset the timer
+            clearInterval(timerInterval); // Stop the current timer
+            startTimer(); // Start the timer from the beginning
+
+            // Show the next question
+            showQuestion();
+        }
+        
+    </script>
+</body>
+</html>
